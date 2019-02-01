@@ -47,6 +47,9 @@ const functions = require('firebase-functions');
 
 const express = require('express');
 const app = express();
+const cors = require('cors')({origin: true});
+
+app.use(cors);
 
 app.get('/bigben_html', (req, res) => {
     const date = new Date();
@@ -74,6 +77,35 @@ app.get('/bigben_api', (req, res) => {
 
 app.get('/helloWorld', (req, res) => {
     res.send("Hello from Firebase!");
+});
+
+app.get('/send_mail', (req, res) => {
+    const nodemailer = require('nodemailer');
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'baneeishaque@gmail.com',
+            pass: 'jefphbapsawogetw'
+        }
+    });
+
+    const mailOptions = {
+        from: 'baneeishaque@gmail.com',
+        to: 'k.baneeishaque@yahoo.com',
+        subject: 'Sending Email using Node.js',
+        text: 'That was easy!'
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log(error);
+            res.send("0");
+        } else {
+            console.log('Email sent: ' + info.response);
+            res.send("1");
+        }
+    });
+
 });
 
 exports.app = functions.https.onRequest(app);
