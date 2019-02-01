@@ -51,23 +51,23 @@ const cors = require('cors')({origin: true});
 
 app.use(cors);
 
-app.get('/bigben_html', (req, res) => {
-    const date = new Date();
-    const hours = (date.getHours() % 12) + 1;  // London is UTC + 1hr;
-    res.send(`
-    <!doctype html>
-    <head>
-      <title>Time</title>
-      <link rel="stylesheet" href="/style.css">
-      <script src="/script.js"></script>
-    </head>
-    <body>
-      <p>In London, the clock strikes:
-        <span id="bongs">${'BONG '.repeat(hours)}</span></p>
-      <button onClick="refresh(this)">Refresh</button>
-    </body>
-  </html>`);
-});
+// app.get('/bigben_html', (req, res) => {
+//     const date = new Date();
+//     const hours = (date.getHours() % 12) + 1;  // London is UTC + 1hr;
+//     res.send(`
+//     <!doctype html>
+//     <head>
+//       <title>Time</title>
+//       <link rel="stylesheet" href="/style.css">
+//       <script src="/script.js"></script>
+//     </head>
+//     <body>
+//       <p>In London, the clock strikes:
+//         <span id="bongs">${'BONG '.repeat(hours)}</span></p>
+//       <button onClick="refresh(this)">Refresh</button>
+//     </body>
+//   </html>`);
+// });
 
 app.get('/bigben_api', (req, res) => {
     const date = new Date();
@@ -80,31 +80,31 @@ app.get('/helloWorld', (req, res) => {
 });
 
 app.get('/send_mail', (req, res) => {
-    const nodemailer = require('nodemailer');
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'baneeishaque@gmail.com',
-            pass: 'jefphbapsawogetw'
-        }
-    });
-
-    const mailOptions = {
-        from: 'baneeishaque@gmail.com',
-        to: 'k.baneeishaque@yahoo.com',
-        subject: 'Sending Email using Node.js',
-        text: 'That was easy!'
-    };
-
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.log(error);
-            res.send("0");
-        } else {
-            console.log('Email sent: ' + info.response);
-            res.send("1");
-        }
-    });
+    // const nodemailer = require('nodemailer');
+    // const transporter = nodemailer.createTransport({
+    //     service: 'gmail',
+    //     auth: {
+    //         user: 'baneeishaque@gmail.com',
+    //         pass: 'jefphbapsawogetw'
+    //     }
+    // });
+    //
+    // const mailOptions = {
+    //     from: 'baneeishaque@gmail.com',
+    //     to: 'k.baneeishaque@yahoo.com',
+    //     subject: 'Sending Email using Node.js',
+    //     text: 'That was easy!'
+    // };
+    //
+    // transporter.sendMail(mailOptions, (error, info) => {
+    //     if (error) {
+    //         console.log(error);
+    //         res.send("0");
+    //     } else {
+    //         console.log('Email sent: ' + info.response);
+    //         res.send("1");
+    //     }
+    // });
 
 });
 
