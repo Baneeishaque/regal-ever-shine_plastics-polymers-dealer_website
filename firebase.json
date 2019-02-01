@@ -10,6 +10,16 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/bigben",
+        "function": "bigben"
+      },
+      {
+        "source": "/helloWorld",
+        "function": "helloWorld"
+      }
     ]
   }
 }
