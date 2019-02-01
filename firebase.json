@@ -13,12 +13,8 @@
     ],
     "rewrites": [
       {
-        "source": "/bigben",
-        "function": "bigben"
-      },
-      {
-        "source": "/helloWorld",
-        "function": "helloWorld"
+        "source": "**",
+        "function": "app"
       }
     ]
   }
