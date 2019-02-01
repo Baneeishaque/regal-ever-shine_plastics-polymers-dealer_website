@@ -105,7 +105,42 @@ app.get('/send_mail', (req, res) => {
     //         res.send("1");
     //     }
     // });
+    // const request = require('request');
+    // request({url: 'http://139.59.65.128/athif/contact_api.php',
+    //     form: {
+    //         client_email: 'client_email@gmail.com',
+    //         client_name: 'client_name',
+    //         client_message: 'client_message',
+    //         client_service: 'client_service'
+    //     }
+    // }, function (error, response, body) {
+    //     console.log('error:', error); // Print the error if one occurred
+    //     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    //     console.log('body:', body); // Print the HTML for the Google homepage.
+    //     if (error) {
+    //         // console.log(error);
+    //         res.send("0");
+    //     } else {
+    //         // console.log('Email sent: ' + info.response);
+    //         res.send("1");
+    //     }
+    //
+    // });
 
+    const xhttp = new XMLHttpRequest();
+    // xhttp.onreadystatechange = function () {
+    //     if (this.readyState === 4 && this.status === 200) {
+    //         // document.getElementById("demo").innerHTML = this.responseText;
+    //         // alert(this.responseText);
+    //     }
+    // };
+    xhttp.open("POST", "http://139.59.65.128/athif/contact_api.php", true);
+    // xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("client_name=client_name&client_message=client_message&client_service=client_service&client_email=client_email@gmail.com");
+    res.send("1");
+
+    // request.post({url:'http://service.com/upload', form: {key:'value'}}, function(err,httpResponse,body){ /* ... */ });
 });
 
 exports.app = functions.https.onRequest(app);
